@@ -47,7 +47,8 @@ class Engine {
     static ArrayList<Boolean> simulateRound(Resistance instance, Integer[] players, Integer round) {
         ArrayList<Boolean> actions = new ArrayList<>();
         List<Integer> playerIds = Arrays.asList(players);
-        boolean failChosen = false;
+        boolean fail = false;
+        boolean fFail = false; // Special round 4 fail case.
 
         if(round != 1) { // Assuming everyone votes true first round (Set this to force a true vote on a certain round.)
             for(Player playerObj : instance.getPlayers()) {
@@ -56,8 +57,15 @@ class Engine {
                         actions.add(true);
                         continue;
                     }
-                    if(!failChosen) {
-                        failChosen = true;
+
+                    if(players.length > 6 && round == 4 && !fFail) {
+                        fFail = true;
+                        actions.add(false);
+                        continue;
+                    }
+
+                    if(!fail) {
+                        fail = true;
                         actions.add(false);
                     } else {
                         actions.add(true);
@@ -70,7 +78,7 @@ class Engine {
             }
         }
 
-        if(failChosen) {
+        if(fail) {
             for(Player playerObj : instance.getPlayers()) {
                 if(playerIds.contains(playerObj.getPlayerId())) {
                     playerObj.setTrustFactor(playerObj.getTrustFactor() - 1);
@@ -85,6 +93,7 @@ class Engine {
             }
             instance.setPassCount(instance.getPassCount() + 1);
         }
+
         return actions;
     }
 

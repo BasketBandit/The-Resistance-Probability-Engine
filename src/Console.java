@@ -25,7 +25,9 @@ class Console {
                 totalSpyWins++;
             }
             instance = new Resistance(players);
-            System.out.println();
+            if(display) {
+                System.out.println();
+            }
         }
 
         System.out.println("##########################################");
