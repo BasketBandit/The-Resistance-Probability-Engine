@@ -1,6 +1,13 @@
 # The-Resistance-Probability-Engine
 
-A simple program that largely emulates a popular board game called 'The Resistance', the purpose of the program is to find the probabiltiy of each team winning. In the current version of the program, the probability of winning is listed below.
+A simple program that largely emulates a popular board game called 'The Resistance', the purpose of the program is to find the probabiltiy of each team winning. The probability of winning in my testing are listed below. If you notice any mistakes in the code or game rules, let me know and ill fix them.
+
+## How To Use
++ Compile code using your favourite IDE.
++ Run the jar using your favourite terminal, with the required arguments.
++ Example: `java -jar Resistance.jar 5 1000000 true` (Arguments in order are: Players (int), Recursions (int), Print ALL Output (boolean)
+
+## Testing Results
 
 ### 5 Players (2 Spies) (Always Pass Mission 1) (1,000,000 iterations)
 
